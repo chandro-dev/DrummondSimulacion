@@ -1,21 +1,16 @@
-// Carbon coque
-export const coqueProduced = (quantityCoal,conversionFactor)=>{
+// CarbonBiochar
+export const incomeProductions = (quantityCoal,conversionFactor)=>{
     return quantityCoal * conversionFactor;
 }
-export const income = (coqueProduced,coquePrice)=>{
-    return coqueProduced * coquePrice;
-}
-export const totalCost = (tranformationCost,quantityCoal,emissionsCost)=>{
-    return (tranformationCost * quantityCoal)+emissionsCost;
-}
-export const profitability = (coqueProduced,coquePrice)=>{
-    return coqueProduced * coquePrice;
-}
-export const totalEmissionsCO2 = (emissionsPerTon,quantityCoal)=>{
-    return emissionsPerTon * quantityCoal;
+export const profitability = (incomeBiochar,incomeC02,totalCost)=>{
+    return (incomeBiochar+incomeC02)-totalCost;
 }
 
-//Carbon Biochar En agricultura
-export const profitabilityBiochar = (biocharIncome,CO2Income,totalCost)=>{
-    return (biocharIncome + CO2Income)-totalCost;
+export const vectorIncome = (profitability)=>{
+    let vectorReturn=[profitability]
+    for (let i = 0; i < 11; i++) {
+       let nextValue = vectorReturn[vectorReturn.length - 1] * 1.5;
+       vectorReturn.push(nextValue);
+    }
+    return vectorReturn;
 }
